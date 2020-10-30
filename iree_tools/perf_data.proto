@@ -1,0 +1,20 @@
+syntax = "proto2";
+
+package iree_mako;
+
+message Sample {
+  required double time = 1;
+  required string target = 2;
+}
+
+message Metadata {
+  required string git_hash = 1;
+  required double timestamp_ms = 2;
+  required string benchmark_key = 3;
+  repeated string tags = 4;
+}
+
+message PerfData {
+  repeated Sample samples = 1;
+  required Metadata metadata = 2;
+}

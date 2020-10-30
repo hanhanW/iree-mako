@@ -1,0 +1,8 @@
+samples: { time: 1251 target: "g"  }
+samples: { time: 5060 target: "v"  }
+samples: { time: 1862 target: "c"  }
+metadata: {
+  git_hash: "b3c56b22161bb8807babeaa40ee9dfd3ee814143"
+  timestamp_ms: 1603296000000
+  benchmark_key: "5538704950034432"
+}
