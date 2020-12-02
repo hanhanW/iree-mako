@@ -62,12 +62,8 @@ int main(int argc, char** argv) {
   mako::quickstore::Quickstore quickstore(quickstore_input);
 
   // STEP 5: Feed sample point data to the Mako Quickstore client.
-  std::map<std::string, double> metrics;
   for (const auto& sample : data.samples()) {
-    if (metrics.count(sample.target())) {
-      LOG(ERROR) << "multiple samples for one target?";
-      return 1;
-    }
+    std::map<std::string, double> metrics;
     metrics[sample.target()] = sample.time();
     quickstore.AddSamplePoint(data.metadata().timestamp_ms(), metrics);
   }

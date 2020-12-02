@@ -1,8 +1,10 @@
-samples: { time: 1251 target: "g"  }
-samples: { time: 5060 target: "v"  }
-samples: { time: 1862 target: "c"  }
+samples: { time: 1251 target: "vlk"  }
+samples: { time: 1051 target: "vlk"  }
+samples: { time: 1351 target: "vlk"  }
+samples: { time: 5060 target: "vmla"  }
+samples: { time: 1862 target: "cpu"  }
 metadata: {
   git_hash: "b3c56b22161bb8807babeaa40ee9dfd3ee814143"
-  timestamp_ms: 1603296000000
-  benchmark_key: "5538704950034432"
+  timestamp_ms: 1633296000000
+  benchmark_key: "5734962163613696"
 }
