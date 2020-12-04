@@ -12,15 +12,14 @@
 // see the license for the specific language governing permissions and
 // limitations under the license.
 
-#include <string>
-#include <iostream>
 #include <fstream>
+#include <string>
 
-#include "glog/logging.h"
 #include "absl/flags/flag.h"
 #include "absl/flags/parse.h"
 #include "cxx/clients/analyzers/threshold_analyzer.h"
 #include "cxx/quickstore/quickstore.h"
+#include "glog/logging.h"
 #include "iree_tools/perf_data.pb.h"
 #include "proto/clients/analyzers/threshold_analyzer.pb.h"
 #include "proto/quickstore/quickstore.pb.h"
@@ -39,7 +38,7 @@ int main(int argc, char** argv) {
   std::string str((std::istreambuf_iterator<char>(t)),
                   std::istreambuf_iterator<char>());
   if (!google::protobuf::TextFormat::ParseFromString(str, &data)) {
-     LOG(ERROR) << "Failed to parse text protobuf from file: " << filepath;
+    LOG(ERROR) << "Failed to parse text protobuf from file: " << filepath;
   }
 
   // STEP 2: Configure run metadata in QuickstoreInput.
@@ -53,7 +52,24 @@ int main(int argc, char** argv) {
   //
   // Read more about analyzers at
   // https://github.com/google/mako/blob/master/docs/ANALYZERS.md
-  // Skip this step for now.
+  auto add_wda = [&](const std::string& key) {
+    mako::window_deviation::WindowDeviationInput* wda_input =
+        quickstore_input.add_wda_inputs();
+    auto* wda_query = wda_input->add_run_info_query_list();
+    wda_query->set_benchmark_key(data.metadata().benchmark_key());
+    wda_query->set_limit(14);
+    auto* wda_check = wda_input->add_tolerance_check_list();
+    wda_check->mutable_data_filter()->set_data_type(
+        mako::DataFilter::METRIC_AGGREGATE_MEDIAN);
+    wda_check->mutable_data_filter()->set_value_key(key);
+    wda_check->set_recent_window_size(5);
+    wda_check->set_direction_bias(
+        mako::window_deviation::ToleranceCheck::IGNORE_DECREASE);
+    wda_check->add_median_tolerance_params_list()->set_median_coeff(0.05);
+  };
+  add_wda("cpu");
+  add_wda("vmla");
+  add_wda("vlk");
 
   // STEP 4: Create a Quickstore instance which reports to the Mako server
   //
@@ -83,7 +99,7 @@ int main(int argc, char** argv) {
       return 1;
     case mako::quickstore::QuickstoreOutput::ANALYSIS_FAIL:
       LOG(ERROR) << "Quickstore Analysis Failure: " << output.summary_output()
-             << "\nRun can be found at: " << output.run_chart_link();
+                 << "\nRun can be found at: " << output.run_chart_link();
       return 1;
   }
 

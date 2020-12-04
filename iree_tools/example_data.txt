@@ -1,10 +1,125 @@
-samples: { time: 1251 target: "vlk"  }
-samples: { time: 1051 target: "vlk"  }
-samples: { time: 1351 target: "vlk"  }
-samples: { time: 5060 target: "vmla"  }
-samples: { time: 1862 target: "cpu"  }
+samples: {
+  time: 1326
+  target: "vlk"
+}
+samples: {
+  time: 1200
+  target: "vlk"
+}
+samples: {
+  time: 1174
+  target: "vlk"
+}
+samples: {
+  time: 1186
+  target: "vlk"
+}
+samples: {
+  time: 1183
+  target: "vlk"
+}
+samples: {
+  time: 1132
+  target: "vlk"
+}
+samples: {
+  time: 1187
+  target: "vlk"
+}
+samples: {
+  time: 1183
+  target: "vlk"
+}
+samples: {
+  time: 1132
+  target: "vlk"
+}
+samples: {
+  time: 1185
+  target: "vlk"
+}
+samples: {
+  time: 5196
+  target: "vmla"
+}
+samples: {
+  time: 5144
+  target: "vmla"
+}
+samples: {
+  time: 5138
+  target: "vmla"
+}
+samples: {
+  time: 5110
+  target: "vmla"
+}
+samples: {
+  time: 5139
+  target: "vmla"
+}
+samples: {
+  time: 5127
+  target: "vmla"
+}
+samples: {
+  time: 5137
+  target: "vmla"
+}
+samples: {
+  time: 5124
+  target: "vmla"
+}
+samples: {
+  time: 5114
+  target: "vmla"
+}
+samples: {
+  time: 5128
+  target: "vmla"
+}
+samples: {
+  time: 934
+  target: "cpu"
+}
+samples: {
+  time: 931
+  target: "cpu"
+}
+samples: {
+  time: 919
+  target: "cpu"
+}
+samples: {
+  time: 925
+  target: "cpu"
+}
+samples: {
+  time: 921
+  target: "cpu"
+}
+samples: {
+  time: 920
+  target: "cpu"
+}
+samples: {
+  time: 922
+  target: "cpu"
+}
+samples: {
+  time: 934
+  target: "cpu"
+}
+samples: {
+  time: 920
+  target: "cpu"
+}
+samples: {
+  time: 935
+  target: "cpu"
+}
 metadata: {
-  git_hash: "b3c56b22161bb8807babeaa40ee9dfd3ee814143"
-  timestamp_ms: 1633296000000
+  git_hash: "dc84fff402c6dc98c1406ba6b0be0c5a2a33fb5e"
+  timestamp_ms: 1606953617000
   benchmark_key: "5734962163613696"
 }
